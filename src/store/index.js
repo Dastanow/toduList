@@ -16,7 +16,7 @@ const todosReduser = (state = inishal, action) => {
             };
             case "ADD__TODO":
             const todo = {
-            id: state.todus.length +1,
+            id: state.todus.length,
             email: action.payload,
           
             };
@@ -25,15 +25,14 @@ const todosReduser = (state = inishal, action) => {
                 ...state,
                 todus: [...state.todus, todo]
             };
-            // case "ADD__DELETE":
-            //     const delet = async (id) => {
-            //         const idToDelete = action.payload;
-            //         const updatedTodus =  todus.filter((item) => item.id !== idToDelete)
-            //         return {
-            //             ...state,
-            //             todus:  updatedTodus,
-            //         };
-            //     }
+            case "ADD__DELETE":
+                const idToDelete = action.payload;                
+                const updatedTodus = state.todus.filter((item) => item.id !== idToDelete);
+                return {
+                  ...state,
+                  todus: updatedTodus,
+                };
+                
 
 }
 }
